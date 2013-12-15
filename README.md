@@ -4,8 +4,11 @@ INSTALL
 npm install
 
 If there is some problem just remove the node_module directory and install
+
 npm install express
+
 npm install ejs
+
 npm install duino
 
 
