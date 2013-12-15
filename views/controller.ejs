@@ -1,0 +1,33 @@
+<div ng-app>
+  <ul ng-controller="arbolControl" style="list-style:none">
+    <li ng-repeat="led in leds">
+    <input type="checkbox" ng-model="led.value" />
+    <span class="turn-{{led.done}}">{{led.name}}</span>
+    </li>
+  </ul>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script language="JavaScript">
+var socket = io.connect(configs.socketSrv+':'+configs.port);
+function arbolControl($scope) {
+  $scope.leds = [
+  ];
+
+  $scope.$watch('leds', function (val) {
+    socket.emit(configs.ledInt.toServer, $scope.leds);
+  }, true);
+
+  socket.on(configs.ledInt.toClient, function (data) {
+    $scope.$apply(function () {
+      $scope.leds = data;
+    });
+  });
+
+  function safeApply (fn) {
+    ($scope.$$phase || $scope.$root.$$phase) ? fn() : $scope.$apply(fn);
+  }
+}
+
+
+</script>
+
