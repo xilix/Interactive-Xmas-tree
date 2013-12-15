@@ -8,6 +8,9 @@ npm install express
 npm install ejs
 npm install duino
 
+
+Save the node_modules/duino/src/du.ino on the arduino board using the arduino <a href="http://arduino.cc/en/Main/Software" target="_blank">software</a>
+
 REQUIREMENTS
 ========
 
