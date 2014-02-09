@@ -16,7 +16,7 @@ app.configure(function () {
   app.set('port', configs.port);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
-  app.use(express.logger('dev'));
+  app.use(express.logger());
   app.use(express.json());
   app.use(express.urlencoded()):
   app.use(express.methodOverride());
